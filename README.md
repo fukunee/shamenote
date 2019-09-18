@@ -39,6 +39,6 @@ Description:
 
 ## 推荐工具
 
- - **Typora** Markdown文档编辑器 [下载地址](https://desktop.github.com/)
+ - **Typora** Markdown文档编辑器 [下载地址](https://www.typora.io/)
     - **Misty** Typora主题 [下载地址](https://github.com/etigerstudio/typora-misty-theme/releases)
- - **Github Desktop** 可视化Github管理工具 [下载地址](https://www.typora.io/)
+ - **Github Desktop** 可视化Github管理工具 [下载地址](https://www.typora.io/)(https://desktop.github.com/)
