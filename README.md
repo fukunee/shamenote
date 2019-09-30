@@ -32,7 +32,7 @@ Description:
 | Luo Jinzhao | [Yllnss](https://github.com/Yllnss)           |        |
 | Xie Shensen | [huomu666](https://github.com/huomu666)       |        |
 | Tan Zhijian | [WallaceTtan](https://github.com/WallaceTtan) |        |
-| Lin Runyu   |                                               |        |
+| Lin Runyu   | [linovce](https://github.com/linovce)         |        |
 | Li Weicheng |                                               |        |
 
 
