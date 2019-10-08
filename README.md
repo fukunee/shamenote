@@ -6,6 +6,8 @@
      - algorism/ 算法类
      - java/ java类
      - crm/ 业务类
+- leetCode/
+     - ... LC提交位置
 
 
 
@@ -27,13 +29,13 @@ Description:
 
 | 姓名        | ID                                            | 贡献度 |
 | ----------- | --------------------------------------------- | ------ |
-| Fu Kun      | fukunee                                       |        |
+| Fu Kun      | [fukunee](https://github.com/fukunee)         |        |
 | Liu Yucong  | [a-yuyuyu](https://github.com/a-yuyuyu)       |        |
 | Luo Jinzhao | [Yllnss](https://github.com/Yllnss)           |        |
 | Xie Shensen | [huomu666](https://github.com/huomu666)       |        |
 | Tan Zhijian | [WallaceTtan](https://github.com/WallaceTtan) |        |
 | Lin Runyu   | [linovce](https://github.com/linovce)         |        |
-| Li Weicheng |                                               |        |
+| Li Weicheng | [lwc-git](https://github.com/lwc-git)         |        |
 
 
 
