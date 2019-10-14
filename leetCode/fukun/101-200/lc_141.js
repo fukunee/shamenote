@@ -4,7 +4,13 @@ function ListNode(val) {
 }
 
 const hasCycle = function (head) {
-
+    let curr = head;
+    while (curr) {
+        if (curr.flag) return true;
+        curr.flag = true;
+        curr = curr.next;
+    }
+    return false;
 };
 
 let ln0 = new ListNode(1);

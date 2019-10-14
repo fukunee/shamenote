@@ -1,0 +1,29 @@
+class Solution {
+    public boolean isUgly(int num) {
+        if(num == 0){
+            return false;
+        }
+        while (num != 1){
+            if(num % 2 == 0){
+                num /= 2;
+                continue;
+            }
+            if(num % 3 == 0){
+                num /= 3;
+                continue;
+            }
+            if(num % 5 == 0){
+                num /= 5;
+                continue;
+            }
+            return false;
+        }
+
+        return true;
+
+// 作者：reedfan
+// 链接：https://leetcode-cn.com/problems/ugly-number/solution/ji-bai-liao-100de-javayong-hu-by-reedfan-3/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+    }
+}
