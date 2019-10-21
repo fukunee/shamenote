@@ -1,0 +1,115 @@
+class Solution {
+    public boolean isValidSudoku(char[][] board) {
+        for (int i = 0; i < 9; i++) {
+            Set<Character> set = new HashSet<>();
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j] < 58 && board[i][j] > 48) {
+                    if (set.contains(board[i][j])) {
+                        return false;
+                    } else set.add(board[i][j]);
+                }
+            }
+        }
+        for (int j = 0; j < 9; j++) {
+            Set<Character> set = new HashSet<>();
+            for (int i = 0; i < 9; i++) {
+                if (board[i][j] < 58 && board[i][j] > 48) {
+                    if (set.contains(board[i][j])) {
+                        return false;
+                    } else set.add(board[i][j]);
+                }
+            }
+        }
+        Set<Character> set1 = new HashSet<>();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] < 58 && board[i][j] > 48) {
+                    if (set1.contains(board[i][j])) {
+                        return false;
+                    } else set1.add(board[i][j]);
+                }
+            }
+        }
+        Set<Character> set2 = new HashSet<>();
+        for (int i = 3; i < 6; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] < 58 && board[i][j] > 48) {
+                    if (set2.contains(board[i][j])) {
+                        return false;
+                    } else set2.add(board[i][j]);
+                }
+            }
+        }
+        Set<Character> set3 = new HashSet<>();
+        for (int i = 6; i < 9; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] < 58 && board[i][j] > 48) {
+                    if (set3.contains(board[i][j])) {
+                        return false;
+                    } else set3.add(board[i][j]);
+                }
+            }
+        }
+        Set<Character> set4 = new HashSet<>();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 3; j < 6; j++) {
+                if (board[i][j] < 58 && board[i][j] > 48) {
+                    if (set4.contains(board[i][j])) {
+                        return false;
+                    } else set4.add(board[i][j]);
+                }
+            }
+        }
+        Set<Character> set5 = new HashSet<>();
+        for (int i = 3; i < 6; i++) {
+            for (int j = 3; j < 6; j++) {
+                if (board[i][j] < 58 && board[i][j] > 48) {
+                    if (set5.contains(board[i][j])) {
+                        return false;
+                    } else set5.add(board[i][j]);
+                }
+            }
+        }
+        Set<Character> set6 = new HashSet<>();
+        for (int i = 6; i < 9; i++) {
+            for (int j = 3; j < 6; j++) {
+                if (board[i][j] < 58 && board[i][j] > 48) {
+                    if (set6.contains(board[i][j])) {
+                        return false;
+                    } else set6.add(board[i][j]);
+                }
+            }
+        }
+        Set<Character> set7 = new HashSet<>();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 6; j < 9; j++) {
+                if (board[i][j] < 58 && board[i][j] > 48) {
+                    if (set7.contains(board[i][j])) {
+                        return false;
+                    } else set7.add(board[i][j]);
+                }
+            }
+        }
+        Set<Character> set8 = new HashSet<>();
+        for (int i = 3; i < 6; i++) {
+            for (int j = 6; j < 9; j++) {
+                if (board[i][j] < 58 && board[i][j] > 48) {
+                    if (set8.contains(board[i][j])) {
+                        return false;
+                    } else set8.add(board[i][j]);
+                }
+            }
+        }
+        Set<Character> set9 = new HashSet<>();
+        for (int i = 6; i < 9; i++) {
+            for (int j = 6; j < 9; j++) {
+                if (board[i][j] < 58 && board[i][j] > 48) {
+                    if (set9.contains(board[i][j])) {
+                        return false;
+                    } else set9.add(board[i][j]);
+                }
+            }
+        }
+        return true;
+    }
+}
