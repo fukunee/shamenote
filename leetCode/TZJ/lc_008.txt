@@ -1,0 +1,44 @@
+class Solution {
+    public int myAtoi(String str) {
+        String str1 = str.trim();
+        if (str1.equals("")) return 0;
+        if (str1.equals("+")) return 0;
+        if (str1.charAt(0) == '-') return getNum(str1.substring(1), true);
+        if (str1.charAt(0) == '+' && Character.isDigit(str1.charAt(1))) {
+            return getNum(str1.substring(1), false);
+        }
+        if (Character.isDigit(str1.charAt(0))) return getNum(str1, false);
+        return 0;
+    }
+    private int getNum(String str, boolean negative) {
+        int n = str.length();
+        int ans = 0;
+        int factor = 0;
+        int max = Integer.MAX_VALUE;
+        int min = Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            char ch = str.charAt(i);
+            if (Character.isDigit(ch)) {
+                factor = (int)ch - (int)('0');
+                if (ans > max / 10) {
+                    return (negative ? min : max);
+                }
+                if (ans < max / 10) {
+                    ans = ans * 10 + factor;
+                } else {
+                    if (ans == max / 10) {
+                        if (factor == 8 && negative) {
+                            return min;
+                        }
+                        if (factor <= 7) {
+                            ans = ans * 10 + factor;
+                        } else {
+                            return (negative ? min : max);
+                        }
+                    } 
+                }
+            } else break;
+        }
+        return (negative ? -ans : ans);
+    }
+}
