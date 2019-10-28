@@ -1,0 +1,38 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        if(head == null || head.next == null) return true;
+    	ListNode slow = head, fast = head.next, pre = null, prepre = null;
+    	while(fast != null && fast.next != null) {
+    		//反转前半段链表
+    		pre = slow;
+    		slow = slow.next;
+    		fast = fast.next.next;
+    		//先移动指针再来反转
+    		pre.next = prepre;
+    		prepre = pre;
+    	}
+    	ListNode p2 = slow.next;
+    	slow.next = pre;
+    	ListNode p1 = fast == null? slow.next : slow;
+    	while(p1 != null) {
+    		if(p1.val != p2.val)
+    			return false;
+    		p1 = p1.next;
+    		p2 = p2.next;
+    	}
+		return true;
+
+// 作者：colin0000007
+// 链接：https://leetcode-cn.com/problems/palindrome-linked-list/solution/javashi-xian-kuai-man-zhi-zhen-fan-zhuan-qian-ban-/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+    }
+}
