@@ -1,0 +1,22 @@
+class Solution {
+    public int[] gardenNoAdj(int N, int[][] paths) {
+        Map<Integer, Set<Integer>> G = new HashMap<>();
+        for (int i = 0; i < N; i++) G.put(i, new HashSet<>());
+        for (int[] p : paths) {
+            G.get(p[0] - 1).add(p[1] - 1);
+            G.get(p[1] - 1).add(p[0] - 1);
+        }
+        int[] res = new int[N];
+        for (int i = 0; i < N; i++) {
+            int[] colors = new int[5];
+            for (int j : G.get(i))
+                // 花的颜色有1、2、3、4四种，构建颜色数组，数组下标代表颜色，若某种颜色已被使用，相应下标的值置1
+                colors[res[j]] = 1;
+            for (int c = 4; c > 0; --c)
+                // 找到最小的未被使用的颜色，给第i个花园（0——N-1个花园）
+                if (colors[c] == 0)
+                    res[i] = c;
+        }
+        return res;
+    }
+}
