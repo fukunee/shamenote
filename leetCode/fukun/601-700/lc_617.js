@@ -1,20 +1,12 @@
-var mergeTrees = function(t1, t2) {
-    if(!t1&&!t2)return null;
-    const helper=function(node1,node2,newNode){
-        if(!node1&&!node2)return;
-        if(!node1)newNode.val=node2.val;
-        if(!node2)newNode.val=node1.val;
-        if(node1&&node2)newNode.val=node1.val+node2.val;
-        if((node1&&node1.left)||(node2&&node2.left)){
-            newNode.left=new TreeNode(null);
-            helper(node1?node1.left:null,node2?node2.left:null,newNode.left);
-        }
-        if((node1&&node1.right)||(node2&&node2.right)){
-            newNode.right=new TreeNode(null);
-            helper(node1?node1.right:null,node2?node2.right:null,newNode.right)
-        }
-    };
-    let output=new TreeNode(null);
-    helper(t1,t2,output);
-    return output;
+var mergeTrees = function (t1, t2) {
+    if (!t1) {
+        return t2
+    } else if (!t2) {
+        return t1
+    } else if (t1 && t2) {
+        t1.val = t1.val + t2.val
+        t1.left = mergeTrees(t1.left, t2.left)
+        t1.right = mergeTrees(t1.right, t2.right)
+        return t1
+    }
 };
