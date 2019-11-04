@@ -1,0 +1,31 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean helper(TreeNode node, Integer lower, Integer upper) {
+        if (node == null) return true;
+
+        int val = node.val;
+        if (lower != null && val <= lower) return false;
+        if (upper != null && val >= upper) return false;
+
+        if (! helper(node.right, val, upper)) return false;
+        if (! helper(node.left, lower, val)) return false;
+        return true;
+    }
+
+    public boolean isValidBST(TreeNode root) {
+        return helper(root, null, null);
+    }
+
+// 作者：LeetCode
+// 链接：https://leetcode-cn.com/problems/validate-binary-search-tree/solution/yan-zheng-er-cha-sou-suo-shu-by-leetcode/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+}

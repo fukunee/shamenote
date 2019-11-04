@@ -1,0 +1,23 @@
+class Solution {
+    // 作者：jyd
+    // 链接：https://leetcode-cn.com/problems/course-schedule/solution/course-schedule-tuo-bu-pai-xu-bfsdfsliang-chong-fa/
+    // 来源：力扣（LeetCode）
+    // 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        int[] indegrees = new int[numCourses];
+        for(int[] cp : prerequisites) indegrees[cp[0]]++;
+        LinkedList<Integer> queue = new LinkedList<>();
+        for(int i = 0; i < numCourses; i++){
+            if(indegrees[i] == 0) queue.addLast(i);
+        }
+        while(!queue.isEmpty()) {
+            Integer pre = queue.removeFirst();
+            numCourses--;
+            for(int[] req : prerequisites) {
+                if(req[1] != pre) continue;
+                if(--indegrees[req[0]] == 0) queue.add(req[0]);
+            }
+        }
+        return numCourses == 0;
+    }
+}
