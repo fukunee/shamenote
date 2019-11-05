@@ -27,7 +27,7 @@ MinStackTree.prototype.add = function (val) {
     }
     while (1) {
         if (newCurr.up) {
-            newCurr.up.val > newCurr.val ? [newCurr.up.val, newCurr.val] = [newCurr.val, newCurr.up.val] : null;
+            if (newCurr.up.val > newCurr.val) [newCurr.up.val, newCurr.val] = [newCurr.val, newCurr.up.val];
             newCurr = newCurr.up;
         } else {
             break;
@@ -37,7 +37,8 @@ MinStackTree.prototype.add = function (val) {
 
 MinStackTree.prototype.remove = function () {
     this.length--;
-    let removeCurr = this.queue.pop();
+    let removeCurr = this.queue.pop(),
+        curr = this.root;
     this.root.val = removeCurr.val;
     if (removeCurr.up.left === removeCurr) {
         removeCurr.up.left = null
@@ -45,24 +46,14 @@ MinStackTree.prototype.remove = function () {
         removeCurr.up.right = null;
         this.queue.unshift(removeCurr.up);
     }
-    let curr = this.root;
     while (1) {
-        if (!curr.left) break;
+        if (!curr.left || curr.val <= Math.min(curr.left.val, curr.right ? curr.right.val : Infinity)) break;
         if (!curr.right || curr.left.val <= curr.right.val) {
-            if (curr.val > curr.left.val) {
-                [curr.left.val, curr.val] = [curr.val, curr.left.val];
-                curr = curr.left;
-            } else {
-                break;
-            }
-
+            [curr.left.val, curr.val] = [curr.val, curr.left.val];
+            curr = curr.left;
         } else {
-            if (curr.val > curr.right.val) {
-                [curr.right.val, curr.val] = [curr.val, curr.right.val];
-                curr = curr.right;
-            } else {
-                break;
-            }
+            [curr.right.val, curr.val] = [curr.val, curr.right.val];
+            curr = curr.right;
         }
     }
 };
@@ -76,4 +67,5 @@ let findKthLargest = function (nums, k) {
     }
     return stackTree.root.val;
 };
+
 console.log(findKthLargest([3, 2, 1, 5, 6, 4], 2));
