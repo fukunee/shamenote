@@ -9,13 +9,9 @@
 
 **零基础 Python 入门 专项课程**
 1、Programming for Everybody
-----大家的编程（开始学习python)
 2、Python Data Structures
-----Python 数据结构
 3、Using Python to Access Web Data
-----使用 Python 访问网络数据
 4、Using Databases with Python
-----Python 数据库开发
 5、Capstone-Retrieving, Processing, and Visualizing Data with Python
 
 **Applied Data Science with Python 专项课程**
@@ -50,12 +46,10 @@
 
 **Interaction Design (交互设计）专项课程**
 1、Human-Centered Design: an Introduction
-----以人为本的设计:概述
 2、Design Principles an Introduction(设计原则导论)
 3、Social Computing (社交计算)
 4、Input and Interaction (输入与互动)
 5、User Experience: Research & Prototyping
-----用户体验:研究与原型
 6、Information Design (信息设计)
 7、Designing, Running, and Analyzing Experiments (设计，运行和实验分析)
 
