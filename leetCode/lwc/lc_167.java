@@ -8,16 +8,16 @@ import java.util.HashMap;
  */
 public class U167 {
     public int[] twoSum(int[] numbers, int target) {
-        int[] v = new int[2];
-        HashMap<Integer,Integer> map = new HashMap<>();
-        for(int i = 0; i < numbers.length; i++){
-            if(map.containsKey(target-numbers[i])){
-                v[0] = map.get(target-numbers[i]);
-                v[1] = i+1;
-                return v;
-            }
-            map.put(numbers[i],i+1);
+        int left = 0;
+        int right = numbers.length - 1;
+        while(left < right){
+            if(numbers[left] + numbers[right] == target)
+                return new int[]{left + 1, right + 1};
+            else if(numbers[left] + numbers[right] > target)
+                right --;
+            else
+                left ++;
         }
-        return v;
+        return new int[]{0, 0};
     }
 }
