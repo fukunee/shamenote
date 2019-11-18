@@ -1,0 +1,52 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        // 整体思路是广度优先遍历BFS
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) return res;
+        // 使用两个stack，奇数层（左→右）一个，偶数层（右→左）一个。
+        Stack<TreeNode> leftStack = new Stack<>();
+        Stack<TreeNode> rightStack = new Stack<>();
+        int index = 0;
+        // 加入第1层（index从0开始)的根节点
+        res.add(new ArrayList<>());
+        res.get(index).add(root.val);
+        // 初始化rightStack
+        if (root.left != null) rightStack.push(root.left);
+        if (root.right != null) rightStack.push(root.right);
+        // 循环体开始
+        while (!rightStack.empty() || !leftStack.empty()) {
+            if (!rightStack.empty()) {
+                res.add(new ArrayList<>());
+                index++;
+            }
+            // pop rightStack的同时，push leftStack
+            while (!rightStack.empty()) {
+                TreeNode temp = rightStack.pop();
+                res.get(index).add(temp.val);
+                if (temp.right != null) leftStack.push(temp.right);
+                if (temp.left != null) leftStack.push(temp.left);
+            }
+            if (!leftStack.empty()) {
+                res.add(new ArrayList<>());
+                index++;
+            }
+            // pop leftStack的同时，push rightStack
+            while (!leftStack.empty()) {
+                TreeNode temp = leftStack.pop();
+                res.get(index).add(temp.val);
+                if (temp.left != null) rightStack.push(temp.left);
+                if (temp.right != null) rightStack.push(temp.right);
+            }
+        }
+        return res;
+    }
+}
