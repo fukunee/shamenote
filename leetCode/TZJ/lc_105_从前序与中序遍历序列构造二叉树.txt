@@ -1,0 +1,41 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        if (preorder.length == 0) return null;
+        if (preorder.length == 1) {
+            TreeNode node =  new TreeNode(preorder[0]);
+            return node;
+        }
+        TreeNode root = new TreeNode(preorder[0]);
+        // rootIndex为中序遍历数组中根节点的index，数值上也等于左子树节点数目
+        int rootIndex = 0;
+        for (int i = 0; i < inorder.length; i++) {
+            if (preorder[0] == inorder[i]) {
+                rootIndex = i;
+                break;
+            }
+        }
+        // 左子树的中序与前序遍历
+        int[] leftIn = new int[rootIndex];
+        System.arraycopy(inorder, 0, leftIn, 0, leftIn.length);
+        int[] leftPre = new int[leftIn.length];
+        System.arraycopy(preorder, 1, leftPre, 0, leftPre.length);
+        // 右子树的中序与前序遍历
+        int[] rightIn = new int[inorder.length - rootIndex - 1];
+        System.arraycopy(inorder, rootIndex + 1, rightIn, 0, rightIn.length);
+        int[] rightPre = new int[rightIn.length];
+        System.arraycopy(preorder, rootIndex + 1, rightPre, 0, rightPre.length);
+        // 递归
+        root.left = buildTree(leftPre, leftIn);
+        root.right = buildTree(rightPre, rightIn);
+        return root;
+    }
+}
