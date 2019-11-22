@@ -28,7 +28,7 @@ class Solution {
         }
         return num_islands;
     }
-    // 方法二:思路与方法一相同，但使用了迭代实现。
+    // 方法二:BFS，使用了迭代实现
     // 不知道为啥比递归慢不少
     // public int numIslands(char[][] grid) {
     //     if (grid == null || grid.length == 0) return 0;
