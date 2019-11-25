@@ -306,6 +306,7 @@ https://www.jianshu.com/p/47e632985f11
 | 35       | 搜索插入位置     | 二分法                                             |
 | 33       | 搜索旋转排序数组 | 二分法，这题可以通过异或操作简化代码，但是烦的起飞 |
 
+
 ### 回溯算法详解
 
 **解决一个回溯问题，实际上就是一个决策树的遍历过程**。你只需要思考3个问题：
@@ -360,7 +361,7 @@ PS：**为了简单清晰起见，我们这次讨论的全排列问题不包含�
 
 再进一步，如何遍历一棵树？这个应该不难吧。各种搜索问题其实都是树的遍历问题，而多叉树的遍历框架就是这样：
 
-```
+```伪代码
 void traverse(TreeNode root) {
 	for (TreeNode child : root.children)
 		// 前序遍历需要的操作
@@ -377,7 +378,7 @@ void traverse(TreeNode root) {
 
 现在，你是否理解了回溯算法的这段核心框架？
 
-```
+```伪代码
 for 选择 in 选择列表:
 	# 做选择
 	将该选择从选择列表移除
@@ -392,7 +393,7 @@ for 选择 in 选择列表:
 
 下面，直接看全排列代码：
 
-```
+```java
 List<List<Integer>> res = new LinkedList<>();
 // 主函数，输入一组不重复的数字，返回他们的全排列
 List<List<Integer>> permute(int[] nums) {
@@ -445,7 +446,7 @@ PS：皇后可以攻击同一行、同一列、左上左下右上右下四个方
 
 直接套用框架：
 
-```
+```c++
 vector<vector<string>> res;
 // 输入棋盘边长n，返回所有合法的放置
 vector<vector<string>> solveNQueens(int n) {
@@ -479,7 +480,7 @@ void backtrack(vector<string>& board, int row) {
 
 这部分主要代码，跟全排列问题差不多。isValid函数的实现也很简单：
 
-```
+```c++
 // 是否可以在board[row][col]放置皇后?
 bool isValid(vector<string>& board, int row, int col) {
 	int n = board.size();
@@ -511,7 +512,7 @@ bool isValid(vector<string>& board, int row, int col) {
 
 其实特别简单，只要稍微修改一下回溯算法的代码即可：
 
-```
+```c++
 // 函数找到一个答案后就返回true
 bool backtrack(vector<string>& board, int row) {
 	// 触发结束条件
@@ -536,7 +537,7 @@ bool backtrack(vector<string>& board, int row) {
 
 回溯算法就是个多叉树的遍历问题，关键就是在前序遍历和后序遍历的位置做一些操作，算法框架如下：
 
-```
+```伪代码
 def backtrack(...):
 	for 选择 in 选择列表:
 		做选择
