@@ -9,3 +9,6 @@
 * 平衡二叉树TreeSet
 * 桶排序
 
+#### 279. Perfect Squares
+
+- 动态转移方程
