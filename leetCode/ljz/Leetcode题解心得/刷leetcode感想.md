@@ -3,21 +3,27 @@
 ## 实用技巧
 - int[]转List 
   List<Integer> list = Arrays.stream(ints).boxed().collect(Collectors.toList());
+  
 - 不使用额外空间交换 两个数
   a = a ^ b
   b = a ^ b
   a = a ^ b
   原理：如果 a ^ b = c 则 a ^ c = b   b ^ c = a
+  
 - for(Integer num : a) 和 for(int num : a) 效率相差很大，请根据a的类型选择
+
 - List<List<Integer>> result = new LinkedList<>();
 
     ```java
     result.add(new LinkedList<>(Arrays.asList(1,3)));
     result.add(new LinkedList<>(Arrays.asList(1,4)));
     ```
+    
 - Integer.parseInt   Integer.toBinaryString();
+
 - int i = ((day + 2 * month + 3 * (month + 1)/5 + year + year / 4 - year / 100 + year / 400) %7);
  i%7 = 0 Monday 计算周几的方法
+
 - 对有限范围内重复出现的数进行计数，并输出
  1.map保存（数，计数）最慢
  2.int[] a = new int[数出现的范围+1];
@@ -28,10 +34,15 @@
   然后直接遍历a读出
   
   效率3>2>1,这里的3>2的情况是数出现的范围不太大，但是如果出现2>3，说明int[] a 这样都不太好了，所以以后遇到直接用第3种
+  
 - 位运算
  1.最后一位置1其他变为0：x & -x . 
  2.最后一位1置0 : x &(x-1) 
  3.（1 << n）-1 就生成了n个1组成的二进制数
+
+- java虚拟机要花时间生成对象，并且要清除，生成过多的变量会对程序性能带来很大影响
+
+- Java 编译器会寻找机会内联所有的 `final` 方法，内联对于提升 Java 运行效率作用重大，具体参见 Java 运行优化。此举能够使性能平均提高 50% 。
 
 
 ## 1071.字符串的最大因子（求公因子通用方法）
