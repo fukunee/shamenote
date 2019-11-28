@@ -1,48 +1,42 @@
-package solution2;
+package leetcode;
 
-import java.util.TreeSet;
+import java.util.PriorityQueue;
 
 /**
  * @author lwc
- * @date 2019/10/12 15:28
+ * @date 2019/11/26 20:48
  */
-public class U264 {
+public class lc_264 {
     public int nthUglyNumber(int n) {
-        int m = (int) Math.sqrt(2 * n);
-        int max = (int) Math.pow(2, m);
-
-        TreeSet<Integer> set = new TreeSet<>();
-        set.add(1);
-
-        int[] v = new int[Math.max(max,20)];
-        int pos = 0;
-        int i = 0;
-        v[0] = 1;
-
-        while (v[pos] != 0) {
-            int v1 = v[pos] * 2;
-            int v2 = v[pos] * 3;
-            int v3 = v[pos] * 5;
-
-            if (v1 <= max && set.add(v1))
-                v[++i] = v1;
-            if (v2 <= max && set.add(v2))
-                v[++i] = v2;
-            if (v3 <= max && set.add(v3))
-                v[++i] = v3;
-            pos++;
+        int pos = 0; long cur = 0;
+        PriorityQueue<Long> queue = new PriorityQueue();
+        queue.offer((long)1);
+        while(pos < n){
+            if(cur == queue.peek())
+                queue.poll();
+            else {
+                cur = queue.poll();
+                queue.offer(cur * 2);
+                queue.offer(cur * 3);
+                queue.offer(cur * 5);
+                pos++;
+            }
         }
-
-
-        int j = 1;
-        for (int s : set) {
-            if (j++ == n) return s;
-        }
-
-        return 0;
+        return (int)cur;
     }
 
+    public int nthUglyNumber2(int n) {
+        int[] dp = new int[n];
+        dp[0] = 1;
+        int i2 = 0, i3 = 0, i5 = 0;
+        for (int i = 1; i < n; i++) {
+            int min = Math.min(dp[i2] * 2, Math.min(dp[i3] * 3, dp[i5] * 5));
+            if (min == dp[i2] * 2) i2++;
+            if (min == dp[i3] * 3) i3++;
+            if (min == dp[i5] * 5) i5++;
+            dp[i] = min;
+        }
 
-
-
+        return dp[n - 1];
+    }
 }
