@@ -1,0 +1,22 @@
+    List<List<Integer>> res = new LinkedList<>();
+    public List<List<Integer>> subsets(int[] nums) {
+        res.add(new LinkedList<>());
+        LinkedList<Integer> track = new LinkedList<>();
+        for (int i = 1; i <= nums.length; i++) {
+            backtrack(track, nums, i);
+        }
+        return res;
+    }
+
+    public void backtrack(LinkedList<Integer> track, int[] nums, int n) {
+        if (track.size() == n) {
+            res.add(new LinkedList<>(track));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (track.contains(nums[i]) || (track.size() > 0 && nums[i] < track.getLast())) continue;
+            track.add(nums[i]);
+            backtrack(track, nums, n);
+            track.removeLast();
+        }
+    }
