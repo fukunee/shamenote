@@ -1,0 +1,37 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    // The property of BST : inorder traversal of BST is an array sorted in the ascending order.
+    // Approach 1: Recursion
+    // public ArrayList<Integer> inorder(TreeNode root, ArrayList<Integer> arr) {
+    //     if (root == null) return arr;
+    //     inorder(root.left, arr);
+    //     arr.add(root.val);
+    //     inorder(root.right, arr);
+    //     return arr;
+    // }
+    // public int kthSmallest(TreeNode root, int k) {
+    //     ArrayList<Integer> nums = inorder(root, new ArrayList<Integer>());
+    //     return nums.get(k - 1);
+    // }
+    // Approach 2: Iteration
+    public int kthSmallest(TreeNode root, int k) {
+        LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
+        while (true) {
+            while (root != null) {
+                stack.add(root);
+                root = root.left;
+            }
+            root = stack.removeLast();
+            if (--k == 0) return root.val;
+            root = root.right;
+        }
+    }
+}

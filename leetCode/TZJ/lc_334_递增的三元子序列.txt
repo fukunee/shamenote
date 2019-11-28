@@ -1,0 +1,20 @@
+class Solution {
+    public boolean increasingTriplet(int[] nums) {
+        int n = nums.length;
+        if (n < 3) return false;
+        int i = 0;
+        while (i < n - 2 && nums[i] >= nums[i + 1]) {
+            i++;
+        }
+        if (i == n - 3 && nums[n - 3] >= nums[n - 2]) return false;
+        int start = nums[i];
+        int flag = nums[++i];
+        while (i < n) {
+            if (nums[i] > flag) return true;
+            if (nums[i] < start) start = nums[i];
+            if (nums[i] > start && nums[i] < flag) flag = nums[i];
+            i++;
+        }
+        return false;
+    }
+}

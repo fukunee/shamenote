@@ -1,0 +1,38 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        // 当pointA到达链表A的尾部时，将其重定位到headB
+        // 当pointB到达链表B的尾部时，将其重定位到headA
+        // 当pointA和pointB指向同一个ListNode，则该ListNode为两个链表相交的节点
+        // 当pointA或者pointB第二次将指向null时（实际上pointA和pointB必将同时第二次指向null），遍历结束
+        if (headA == null || headB == null) return null;
+        ListNode pointA = headA;
+        ListNode pointB = headB;
+        // count用来记录指针是第几次到达链表尾部
+        int count = 0;
+        while (pointA != pointB && count != 2) {
+            if (pointA.next == null) {
+                pointA = headB;
+                count++;
+            } else {
+                pointA = pointA.next;
+            }
+            if (pointB.next == null) {
+                pointB = headA;
+            } else {
+                pointB = pointB.next;
+            }
+        }
+        return count == 2 ? null : pointA;
+    }
+}
