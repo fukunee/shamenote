@@ -1,0 +1,18 @@
+class Solution {
+    public int uniquePaths(int m, int n) {
+        int[][] grids = new int[m][n];
+        grids[0][0] = 1;
+        for (int i = 1; i < m; i++) {
+            grids[i][0] = 1;
+        }
+        for (int j = 1; j < n; j++) {
+            grids[0][j] = 1;
+        }
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                grids[i][j] = grids[i][j - 1] + grids[i - 1][j];
+            }
+        }
+        return grids[m - 1][n - 1];
+    }
+}
