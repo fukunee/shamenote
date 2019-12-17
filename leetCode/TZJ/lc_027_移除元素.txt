@@ -1,0 +1,23 @@
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int len = nums.length;
+        int left = 0;
+        int right = len - 1;
+        int temp = 0;
+        // 此处while中选择<=而不是<是为了当len = 1时能返回正确
+        while (left <= right) {
+            while (left < len && nums[left] != val) {
+                left++;
+            }
+            while (right > -1 && nums[right] == val) {
+                right--;
+            }
+            if (left < right) {
+                temp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = temp;
+            }
+        }
+        return left;
+    }
+}
