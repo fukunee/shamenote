@@ -1,0 +1,42 @@
+class Solution {
+    public String addBinary(String a, String b) {
+        char[] stra = a.toCharArray();
+        char[] strb = b.toCharArray();
+        int lena = stra.length;
+        int lenb = strb.length;
+        int max = Math.max(lena, lenb);
+        char[] res = new char[max];
+        int cur = 0;
+        int carry = 0;
+        for (int i = 1; i <= max; i++) {
+            if (i <= lena) cur = cur + stra[lena - i] - '0';
+            if (i <= lenb) cur = cur + strb[lenb - i] - '0';
+            cur = cur + carry;
+            switch (cur) {
+                case 0 :
+                    res[max - i] = '0';
+                    cur = 0;
+                    break;
+                case 1 :
+                    res[max - i] = '1';
+                    cur = 0;
+                    carry = 0;
+                    break;
+                case 2 :
+                    res[max - i] = '0';
+                    cur = 0;
+                    carry = 1;
+                    break;
+                case 3 :
+                    res[max - i] = '1';
+                    cur = 0;
+                    carry = 1;
+                    break;
+            }
+        }
+        if (carry == 1)
+            return "1" + String.valueOf(res);
+        else 
+            return String.valueOf(res);
+    }
+}

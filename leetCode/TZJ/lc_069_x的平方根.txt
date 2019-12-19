@@ -1,0 +1,37 @@
+class Solution {
+    // public int mySqrt(int x) {
+    //     int left = 0;
+    //     int right = x;
+    //     int mid = 0;
+    //     while (left != right) {
+    //         mid = left + (right - left) / 2;
+    //         if (mid >= 46340) {
+    //             right = mid;
+    //             continue;
+    //         }
+    //         if (mid * mid == x) return mid;
+    //         if ((mid + 1) * (mid + 1) == x) return mid + 1;
+    //         if (mid * mid < x && (mid + 1) * (mid + 1) > x) break;
+    //         if ((mid + 1) * (mid + 1) < x) left = mid + 1;
+    //         if (mid * mid > x) right = mid;
+    //     }
+    //     return mid;
+    // }
+    // 牛顿法求根
+    int s;
+    
+    public int mySqrt(int x) {
+        s=x;
+        if(x==0) return 0;
+        return ((int)(sqrts(x)));
+    }
+
+    public double sqrts(double x){
+        double res = (x + s / x) / 2;
+        if (res == x) {
+            return x;
+        } else {
+            return sqrts(res);
+        }
+    } 
+}
