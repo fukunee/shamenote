@@ -1,0 +1,30 @@
+class Solution {
+    public List<Integer> getRow(int rowIndex) {
+        LinkedList<Integer> res = new LinkedList<>();
+        if (rowIndex == 0) {
+            res.add(1);
+            return res;
+        }
+        if (rowIndex == 1) {
+            res.add(1);
+            res.add(1);
+            return res;
+        }
+        int[] target = new int[rowIndex + 1];
+        target[0] = 1;
+        target[1] = 1;
+        int former = 1;
+        for (int i = 2; i < rowIndex + 1; i++) {
+            for (int j = 1; j < i; j++) {
+                int cur = target[j];
+                target[j] = former + target[j];
+                former = cur;
+            }
+            target[i] = 1;
+        }
+        for (Integer x : target) {
+            res.add(x);
+        }
+        return res;
+    }
+}
