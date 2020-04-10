@@ -1,0 +1,20 @@
+class NumArray {
+    private int[] n;
+
+    public NumArray(int[] nums) {
+        n = new int[nums.length + 1];
+        for (int i = 1; i < n.length; i++) {
+            n[i] = nums[i - 1] + n[i - 1];
+        }
+    }
+    
+    public int sumRange(int i, int j) {
+        return n[j + 1] - n[i];
+    }
+}
+
+/**
+ * Your NumArray object will be instantiated and called as such:
+ * NumArray obj = new NumArray(nums);
+ * int param_1 = obj.sumRange(i,j);
+ */

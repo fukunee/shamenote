@@ -1,0 +1,26 @@
+public boolean isPerfectSquare(int num) {
+        // 二分查找
+        long left = 1;
+        long right = num / 2 + 1;
+        long mid = 0;
+        while (right >= left) {
+            mid = left + (right - left) / 2;
+            if (mid * mid == num) {
+                return true;
+            }
+            if (mid * mid >num) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return false;
+        // 牛顿迭代
+//        if (num < 2) return true;
+//
+//        long x = num / 2;
+//        while (x * x > num) {
+//            x = (x + num / x) / 2;
+//        }
+//        return (x * x == num);
+    }
